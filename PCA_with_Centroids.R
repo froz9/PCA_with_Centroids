@@ -40,9 +40,9 @@ library(ggplot2)  # Used library for data visualization
 # paths or a file chooser dialog.
 # The data is expected to be in a matrix-like format where rows are samples
 # and columns are features (metabolites). A 'feature' or 'group' column
-# should exist for sample classification.
+# should exist as the first column for sample classification.
 data_metaboanalyst <- read.csv(
-  "G:\\My Drive\\Ph. D\\Projects\\SkinProject\\Clinical_Trial_2\\Metabolomics\\2_Isotopes_New\\Metaboanalyst\\data_metaboanalyst_no_log_t.csv"
+  "G:\\My Drive\\Ph. D\\Sandra_PCA\\data_metaboanalyst_no_log_t.csv"
 )
 
 # Perform Principal Component Analysis (PCA).
@@ -50,7 +50,7 @@ data_metaboanalyst <- read.csv(
 # - `scale. = T`: Scales the data to have a standard deviation of 1.
 #   Centering and scaling are crucial for PCA to prevent variables with
 #   larger variances from dominating the analysis.
-pca_data <- prcomp(data_metaboanalyst, center = TRUE, scale. = TRUE)
+pca_data <- prcomp(data_metaboanalyst[,-1], center = TRUE, scale. = TRUE)
 
 # Extract the PCA scores (the coordinates of each sample in the PC space)
 # and convert them to a data frame for easier manipulation with ggplot2.
